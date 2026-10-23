@@ -1,0 +1,229 @@
+{
+  "version": 5,
+  "name": "How-Voltage-Works-3V-Supply-And-Load",
+  "description": "A 3 volt supply stands in for a pair of AA batteries, and a 1 kilohm resistor is the load, the part the supply pushes current through. Voltage is the energy difference between two points, so you always measure it between two places. Put the red meter probe on the resistor's top lead and the black probe on its bottom lead and the reading is the full 3 volts, because the resistor is the only thing spending the supply's energy. Swap the probes and the same number appears with a minus sign. The current through this loop is 3 volts divided by 1,000 ohms, which is 3 milliamps (3 thousandths of an amp).",
+  "wheelLocked": false,
+  "activeTab": "t1",
+  "nextIndex": 2,
+  "tabs": [
+    {
+      "id": "t1",
+      "name": "How-Voltage-Works-3V-Supply-And-Load",
+      "doc": {
+        "version": 15,
+        "boards": [
+          {
+            "id": "bb1",
+            "type": "rail-half",
+            "x": 0,
+            "y": 0,
+            "rot": 0,
+            "group": "g1"
+          },
+          {
+            "id": "bb2",
+            "type": "pins-half",
+            "x": 0,
+            "y": 3.5,
+            "rot": 0,
+            "group": "g1"
+          },
+          {
+            "id": "bb3",
+            "type": "rail-half",
+            "x": 0,
+            "y": 17.52,
+            "rot": 0,
+            "group": "g1"
+          }
+        ],
+        "components": [
+          {
+            "id": "psu1",
+            "kind": "psu",
+            "ref": "psu",
+            "x": 68,
+            "y": 0,
+            "params": {
+              "volts": 3
+            }
+          },
+          {
+            "id": "c1",
+            "kind": "discrete",
+            "ref": "resistor",
+            "board": "bb2",
+            "anchor": "a1",
+            "params": {
+              "ohms": 1000,
+              "rot": 0,
+              "end": null
+            },
+            "name": "R1",
+            "description": "load resistor, 1 kilohm"
+          }
+        ],
+        "wires": [
+          {
+            "id": "w1",
+            "from": "psu1.+",
+            "to": "bb1.+25",
+            "color": "red"
+          },
+          {
+            "id": "w2",
+            "from": "psu1.-",
+            "to": "bb3.-25",
+            "color": "black"
+          },
+          {
+            "id": "w3",
+            "from": "bb1.+24",
+            "to": "bb3.+24",
+            "color": "red"
+          },
+          {
+            "id": "w4",
+            "from": "bb3.-24",
+            "to": "bb1.-24",
+            "color": "black"
+          },
+          {
+            "id": "w5",
+            "from": "bb3.+7",
+            "to": "bb2.e1",
+            "color": "red"
+          },
+          {
+            "id": "w6",
+            "from": "bb3.-5",
+            "to": "bb2.c4",
+            "color": "black"
+          }
+        ],
+        "buses": [],
+        "netNames": [],
+        "annotations": [
+          {
+            "id": "an1",
+            "kind": "label",
+            "x": 0,
+            "y": -21.8,
+            "text": "3 V supply across a 1 kilohm resistor",
+            "anchor": "c1"
+          },
+          {
+            "id": "an2",
+            "kind": "label",
+            "x": 0,
+            "y": -20,
+            "text": "A 3 volt supply stands in for a pair of AA batteries, and a 1",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an3",
+            "kind": "label",
+            "x": 0,
+            "y": -18.2,
+            "text": "kilohm resistor is the load, the part the supply pushes current",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an4",
+            "kind": "label",
+            "x": 0,
+            "y": -16.4,
+            "text": "through. Voltage is the energy difference between two points, so",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an5",
+            "kind": "label",
+            "x": 0,
+            "y": -14.6,
+            "text": "you always measure it between two places. Put the red meter",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an6",
+            "kind": "label",
+            "x": 0,
+            "y": -12.8,
+            "text": "probe on the resistor's top lead and the black probe on its",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an7",
+            "kind": "label",
+            "x": 0,
+            "y": -11,
+            "text": "bottom lead and the reading is the full 3 volts, because the",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an8",
+            "kind": "label",
+            "x": 0,
+            "y": -9.2,
+            "text": "resistor is the only thing spending the supply's energy. Swap",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an9",
+            "kind": "label",
+            "x": 0,
+            "y": -7.4,
+            "text": "the probes and the same number appears with a minus sign. The",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an10",
+            "kind": "label",
+            "x": 0,
+            "y": -5.6,
+            "text": "current through this loop is 3 volts divided by 1,000 ohms,",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an11",
+            "kind": "label",
+            "x": 0,
+            "y": -3.8,
+            "text": "which is 3 milliamps (3 thousandths of an amp).",
+            "color": "#808080",
+            "anchor": "c1"
+          }
+        ],
+        "scopeChannels": [],
+        "signals": [],
+        "integrations": [],
+        "nextBoardId": 4,
+        "nextGroupId": 2,
+        "nextComponentId": 2,
+        "nextPsuId": 2,
+        "nextClockId": 1,
+        "nextWireId": 7,
+        "nextBusId": 1,
+        "nextAnnotationId": 12,
+        "nextScopeChannelId": 1,
+        "nextSignalId": 1,
+        "nextOutputId": 1,
+        "nextInputId": 1
+      }
+    }
+  ],
+  "connections": [],
+  "codegen": {},
+  "cpuBreakpoints": {},
+  "customChips": [],
+  "location": null
+}

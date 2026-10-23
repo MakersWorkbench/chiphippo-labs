@@ -1,0 +1,259 @@
+{
+  "version": 5,
+  "name": "How-Electric-Current-Works-LED-Loop",
+  "description": "A 3 volt supply pushes current around a single loop that holds a 330 ohm resistor and a red LED (light-emitting diode, a part that glows when current flows through it in one direction). Current is a count of charge passing a point each second, and in a single loop every part carries the same count, so the resistor's lead and the LED's lead show the same reading. In this simulator the red LED keeps about 1.8 volts for itself, which leaves about 1.2 volts across the resistor. Dividing 1.2 volts by 330 ohms gives about 3.7 milliamps (thousandths of an amp). The resistor also protects the LED, because it limits how much current can flow.",
+  "wheelLocked": false,
+  "activeTab": "t1",
+  "nextIndex": 2,
+  "tabs": [
+    {
+      "id": "t1",
+      "name": "How-Electric-Current-Works-LED-Loop",
+      "doc": {
+        "version": 15,
+        "boards": [
+          {
+            "id": "bb1",
+            "type": "rail-half",
+            "x": 0,
+            "y": 0,
+            "rot": 0,
+            "group": "g1"
+          },
+          {
+            "id": "bb2",
+            "type": "pins-half",
+            "x": 0,
+            "y": 3.5,
+            "rot": 0,
+            "group": "g1"
+          },
+          {
+            "id": "bb3",
+            "type": "rail-half",
+            "x": 0,
+            "y": 17.52,
+            "rot": 0,
+            "group": "g1"
+          }
+        ],
+        "components": [
+          {
+            "id": "psu1",
+            "kind": "psu",
+            "ref": "psu",
+            "x": 68,
+            "y": 0,
+            "params": {
+              "volts": 3
+            }
+          },
+          {
+            "id": "c1",
+            "kind": "discrete",
+            "ref": "resistor",
+            "board": "bb2",
+            "anchor": "a1",
+            "params": {
+              "ohms": 330,
+              "rot": 0,
+              "end": null
+            },
+            "name": "R1",
+            "description": "current-limiting resistor, 330 ohms"
+          },
+          {
+            "id": "c2",
+            "kind": "discrete",
+            "ref": "led",
+            "board": "bb2",
+            "anchor": "a6",
+            "params": {
+              "color": "red",
+              "flip": false,
+              "rot": 0,
+              "end": null
+            },
+            "name": "D1",
+            "description": "red LED"
+          }
+        ],
+        "wires": [
+          {
+            "id": "w1",
+            "from": "psu1.+",
+            "to": "bb1.+25",
+            "color": "red"
+          },
+          {
+            "id": "w2",
+            "from": "psu1.-",
+            "to": "bb3.-25",
+            "color": "black"
+          },
+          {
+            "id": "w3",
+            "from": "bb1.+24",
+            "to": "bb3.+24",
+            "color": "red"
+          },
+          {
+            "id": "w4",
+            "from": "bb3.-24",
+            "to": "bb1.-24",
+            "color": "black"
+          },
+          {
+            "id": "w5",
+            "from": "bb3.+1",
+            "to": "bb2.b1",
+            "color": "red"
+          },
+          {
+            "id": "w6",
+            "from": "bb2.b4",
+            "to": "bb2.b6",
+            "color": "purple"
+          },
+          {
+            "id": "w7",
+            "from": "bb3.-9",
+            "to": "bb2.d7",
+            "color": "black"
+          }
+        ],
+        "buses": [],
+        "netNames": [],
+        "annotations": [
+          {
+            "id": "an1",
+            "kind": "label",
+            "x": 0,
+            "y": -23.6,
+            "text": "LED and resistor on a 3 V supply",
+            "anchor": "c1"
+          },
+          {
+            "id": "an2",
+            "kind": "label",
+            "x": 0,
+            "y": -21.8,
+            "text": "A 3 volt supply pushes current around a single loop that holds a",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an3",
+            "kind": "label",
+            "x": 0,
+            "y": -20,
+            "text": "330 ohm resistor and a red LED (light-emitting diode, a part",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an4",
+            "kind": "label",
+            "x": 0,
+            "y": -18.2,
+            "text": "that glows when current flows through it in one direction).",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an5",
+            "kind": "label",
+            "x": 0,
+            "y": -16.4,
+            "text": "Current is a count of charge passing a point each second, and in",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an6",
+            "kind": "label",
+            "x": 0,
+            "y": -14.6,
+            "text": "a single loop every part carries the same count, so the",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an7",
+            "kind": "label",
+            "x": 0,
+            "y": -12.8,
+            "text": "resistor's lead and the LED's lead show the same reading. In",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an8",
+            "kind": "label",
+            "x": 0,
+            "y": -11,
+            "text": "this simulator the red LED keeps about 1.8 volts for itself,",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an9",
+            "kind": "label",
+            "x": 0,
+            "y": -9.2,
+            "text": "which leaves about 1.2 volts across the resistor. Dividing 1.2",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an10",
+            "kind": "label",
+            "x": 0,
+            "y": -7.4,
+            "text": "volts by 330 ohms gives about 3.7 milliamps (thousandths of an",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an11",
+            "kind": "label",
+            "x": 0,
+            "y": -5.6,
+            "text": "amp). The resistor also protects the LED, because it limits how",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an12",
+            "kind": "label",
+            "x": 0,
+            "y": -3.8,
+            "text": "much current can flow.",
+            "color": "#808080",
+            "anchor": "c1"
+          }
+        ],
+        "scopeChannels": [],
+        "signals": [],
+        "integrations": [],
+        "nextBoardId": 4,
+        "nextGroupId": 2,
+        "nextComponentId": 3,
+        "nextPsuId": 2,
+        "nextClockId": 1,
+        "nextWireId": 8,
+        "nextBusId": 1,
+        "nextAnnotationId": 13,
+        "nextScopeChannelId": 1,
+        "nextSignalId": 1,
+        "nextOutputId": 1,
+        "nextInputId": 1
+      }
+    }
+  ],
+  "connections": [],
+  "codegen": {},
+  "cpuBreakpoints": {},
+  "customChips": [],
+  "location": null
+}

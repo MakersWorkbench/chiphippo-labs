@@ -1,0 +1,365 @@
+{
+  "version": 5,
+  "name": "How-Short-Circuits-Work-Short-With-Meter-v3",
+  "description": "A 9V supply with a 1A current limit feeds a 100Ω load resistor. A toggle switch in series with a 1Ω resistor is wired across the load, so closing the switch adds a short circuit with the small resistance of a real wire. A multimeter set to current reads the current through that 1Ω resistor. With the switch open, the load draws 90mA (9V over 100Ω) and the short path carries nothing. With the switch closed, 9V across 1Ω would call for 9A, which is more than the supply allows, so the supply holds its 1A limit and its output voltage sags to about 1V. Never do this with a battery or an unlimited supply: only the current limit keeps the short safe.",
+  "wheelLocked": false,
+  "activeTab": "t1",
+  "nextIndex": 2,
+  "tabs": [
+    {
+      "id": "t1",
+      "name": "How-Short-Circuits-Work-Short-With-Meter-v3",
+      "instruments": {
+        "multimeter": {
+          "mode": "current",
+          "red": "bb2.b5",
+          "black": "bb2.b8",
+          "visible": true
+        }
+      },
+      "doc": {
+        "version": 15,
+        "boards": [
+          {
+            "id": "bb1",
+            "type": "rail-half",
+            "x": 0,
+            "y": 0,
+            "rot": 0,
+            "group": "g1"
+          },
+          {
+            "id": "bb2",
+            "type": "pins-half",
+            "x": 0,
+            "y": 3.5,
+            "rot": 0,
+            "group": "g1"
+          },
+          {
+            "id": "bb3",
+            "type": "rail-half",
+            "x": 0,
+            "y": 17.52,
+            "rot": 0,
+            "group": "g1"
+          }
+        ],
+        "components": [
+          {
+            "id": "psu1",
+            "kind": "psu",
+            "ref": "psu",
+            "x": 36,
+            "y": -3,
+            "params": {
+              "volts": 9
+            }
+          },
+          {
+            "id": "c1",
+            "kind": "discrete",
+            "ref": "sw-toggle",
+            "board": "bb2",
+            "anchor": "h1",
+            "params": {
+              "on": false
+            },
+            "name": "SW1",
+            "description": "short-circuit switch"
+          },
+          {
+            "id": "c2",
+            "kind": "discrete",
+            "ref": "resistor",
+            "board": "bb2",
+            "anchor": "b5",
+            "params": {
+              "ohms": 1,
+              "rot": 0,
+              "end": null
+            },
+            "name": "R2",
+            "description": "short path (wire)"
+          },
+          {
+            "id": "c3",
+            "kind": "discrete",
+            "ref": "resistor",
+            "board": "bb2",
+            "anchor": "b10",
+            "params": {
+              "ohms": 100,
+              "rot": 0,
+              "end": null
+            },
+            "name": "R1",
+            "description": "load resistor"
+          }
+        ],
+        "wires": [
+          {
+            "id": "w1",
+            "from": "psu1.+",
+            "to": "bb1.+25",
+            "color": "red",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 30.33,
+                "y": 1.25
+              }
+            ]
+          },
+          {
+            "id": "w2",
+            "from": "psu1.-",
+            "to": "bb1.-25",
+            "color": "black",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 42,
+                "y": 2.25
+              },
+              {
+                "x": 30,
+                "y": 2.25
+              }
+            ]
+          },
+          {
+            "id": "w3",
+            "from": "bb1.+24",
+            "to": "bb3.+24",
+            "color": "red",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 28.67,
+                "y": 1.25
+              },
+              {
+                "x": 28.67,
+                "y": 18.77
+              }
+            ]
+          },
+          {
+            "id": "w4",
+            "from": "bb3.-24",
+            "to": "bb1.-24",
+            "color": "black",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 29.33,
+                "y": 19.77
+              },
+              {
+                "x": 29.33,
+                "y": 2.25
+              }
+            ]
+          },
+          {
+            "id": "w5",
+            "from": "bb3.+8",
+            "to": "bb2.a10",
+            "color": "red",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 9.67,
+                "y": 18.77
+              },
+              {
+                "x": 9.67,
+                "y": 16.01
+              }
+            ]
+          },
+          {
+            "id": "w6",
+            "from": "bb1.+1",
+            "to": "bb2.j1",
+            "color": "red",
+            "layout": "routed"
+          },
+          {
+            "id": "w7",
+            "from": "bb2.f3",
+            "to": "bb2.e5",
+            "color": "white",
+            "layout": "routed"
+          },
+          {
+            "id": "w8",
+            "from": "bb3.-12",
+            "to": "bb2.a13",
+            "color": "black",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 13.67,
+                "y": 19.77
+              },
+              {
+                "x": 13.67,
+                "y": 16.01
+              }
+            ]
+          },
+          {
+            "id": "w9",
+            "from": "bb3.-6",
+            "to": "bb2.a8",
+            "color": "black",
+            "layout": "routed",
+            "points": [
+              {
+                "x": 7.67,
+                "y": 19.77
+              },
+              {
+                "x": 7.67,
+                "y": 16.01
+              }
+            ]
+          }
+        ],
+        "buses": [],
+        "netNames": [],
+        "annotations": [
+          {
+            "id": "an1",
+            "kind": "label",
+            "x": 0,
+            "y": -23.6,
+            "text": "A short circuit across a load on a current-limited supply",
+            "anchor": "c1"
+          },
+          {
+            "id": "an2",
+            "kind": "label",
+            "x": 0,
+            "y": -21.8,
+            "text": "A 9V supply with a 1A current limit feeds a 100Ω load resistor.",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an3",
+            "kind": "label",
+            "x": 0,
+            "y": -20,
+            "text": "A toggle switch in series with a 1Ω resistor is wired across the",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an4",
+            "kind": "label",
+            "x": 0,
+            "y": -18.2,
+            "text": "load, so closing the switch adds a short circuit with the small",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an5",
+            "kind": "label",
+            "x": 0,
+            "y": -16.4,
+            "text": "resistance of a real wire. A multimeter set to current reads the",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an6",
+            "kind": "label",
+            "x": 0,
+            "y": -14.6,
+            "text": "current through that 1Ω resistor. With the switch open, the load",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an7",
+            "kind": "label",
+            "x": 0,
+            "y": -12.8,
+            "text": "draws 90mA (9V over 100Ω) and the short path carries nothing.",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an8",
+            "kind": "label",
+            "x": 0,
+            "y": -11,
+            "text": "With the switch closed, 9V across 1Ω would call for 9A, which is",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an9",
+            "kind": "label",
+            "x": 0,
+            "y": -9.2,
+            "text": "more than the supply allows, so the supply holds its 1A limit",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an10",
+            "kind": "label",
+            "x": 0,
+            "y": -7.4,
+            "text": "and its output voltage sags to about 1V. Never do this with a",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an11",
+            "kind": "label",
+            "x": 0,
+            "y": -5.6,
+            "text": "battery or an unlimited supply: only the current limit keeps the",
+            "color": "#808080",
+            "anchor": "c1"
+          },
+          {
+            "id": "an12",
+            "kind": "label",
+            "x": 0,
+            "y": -3.8,
+            "text": "short safe.",
+            "color": "#808080",
+            "anchor": "c1"
+          }
+        ],
+        "scopeChannels": [],
+        "signals": [],
+        "integrations": [],
+        "nextBoardId": 4,
+        "nextGroupId": 2,
+        "nextComponentId": 4,
+        "nextPsuId": 2,
+        "nextClockId": 1,
+        "nextWireId": 10,
+        "nextBusId": 1,
+        "nextAnnotationId": 13,
+        "nextScopeChannelId": 1,
+        "nextSignalId": 1,
+        "nextOutputId": 1,
+        "nextInputId": 1
+      }
+    }
+  ],
+  "connections": [],
+  "codegen": {},
+  "cpuBreakpoints": {},
+  "customChips": [],
+  "location": null
+}
